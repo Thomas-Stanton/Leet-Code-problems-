@@ -1,0 +1,40 @@
+class Solution {
+public:
+    string reverseWords(string s) 
+    {
+    vector<string> reversedWords;
+    string singleWord, reversedSentence;
+
+    for(int i = 0; i < s.length(); i++)
+    {
+     if(s[i] != ' ')
+     {
+         singleWord += s[i];
+     }
+     else if(singleWord != "")
+        {   
+           reversedWords.push_back(singleWord);  // Push word WITHOUT space
+            singleWord = "";
+      }
+    }
+
+    // DON'T FORGET THE LAST WORD!
+    if(singleWord != "")
+     {
+       reversedWords.push_back(singleWord);
+    }
+
+    // Reverse the words
+    while(!reversedWords.empty())
+    {
+       reversedSentence += reversedWords.back();
+      reversedWords.pop_back();
+      if(!reversedWords.empty())
+       {
+          reversedSentence += " ";  // Add space only between words
+         }
+    }
+
+    return reversedSentence;
+    }
+};
